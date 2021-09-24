@@ -15,13 +15,26 @@ const Drawer = createDrawerNavigator<Routes>();
 
 const DrawerNav = () => {
   return (
-    <Drawer.Navigator drawerContent={props => <CustomDrawer {...props} />}>
+    <Drawer.Navigator
+      drawerContent={props => <CustomDrawer {...props} />}
+      screenOptions={{
+        drawerLabelStyle: {
+          color: 'white',
+        },
+        headerStyle: {
+          backgroundColor: '#1C2228',
+        },
+
+        drawerStyle: {
+          backgroundColor: '#1C2228',
+        },
+      }}>
       <Drawer.Screen
         name="Home"
         component={Home}
         options={{
-          drawerIcon: ({color, size}) => (
-            <Ionicons name="home" color={color} size={size} />
+          drawerIcon: ({size}) => (
+            <Ionicons name="home" color="white" size={size} />
           ),
         }}
       />
@@ -29,8 +42,8 @@ const DrawerNav = () => {
         name="Search"
         component={StackNav}
         options={{
-          drawerIcon: ({color, size}) => (
-            <Ionicons name="search" color={color} size={size} />
+          drawerIcon: ({size}) => (
+            <Ionicons name="search" color="white" size={size} />
           ),
           headerShown: false,
         }}
@@ -39,8 +52,8 @@ const DrawerNav = () => {
         name="Diary"
         component={Diary}
         options={{
-          drawerIcon: ({color, size}) => (
-            <Ionicons name="calendar" color={color} size={size} />
+          drawerIcon: ({size}) => (
+            <Ionicons name="calendar" color="white" size={size} />
           ),
         }}
       />
@@ -48,8 +61,8 @@ const DrawerNav = () => {
         name="WatchList"
         component={WatchList}
         options={{
-          drawerIcon: ({color, size}) => (
-            <Ionicons name="time" color={color} size={size} />
+          drawerIcon: ({size}) => (
+            <Ionicons name="time" color="white" size={size} />
           ),
         }}
       />
@@ -57,8 +70,8 @@ const DrawerNav = () => {
         name="Lists"
         component={Lists}
         options={{
-          drawerIcon: ({color, size}) => (
-            <Ionicons name="list" color={color} size={size} />
+          drawerIcon: ({size}) => (
+            <Ionicons name="list" color="white" size={size} />
           ),
         }}
       />
@@ -67,8 +80,8 @@ const DrawerNav = () => {
         name="Reviews"
         component={Reviews}
         options={{
-          drawerIcon: ({color, size}) => (
-            <Ionicons name="reader" color={color} size={size} />
+          drawerIcon: ({size}) => (
+            <Ionicons name="reader" color="white" size={size} />
           ),
         }}
       />
@@ -76,8 +89,8 @@ const DrawerNav = () => {
         name="Profile"
         component={Profile}
         options={{
-          drawerIcon: ({color, size}) => (
-            <Ionicons name="person" color={color} size={size} />
+          drawerIcon: ({size}) => (
+            <Ionicons name="person" color="white" size={size} />
           ),
         }}
       />
