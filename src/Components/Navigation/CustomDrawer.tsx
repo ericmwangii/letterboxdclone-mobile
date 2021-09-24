@@ -9,9 +9,11 @@ import {StyleSheet, Text, View, Image} from 'react-native';
 import {useAuth} from 'src/Context/AuthContext';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import auth from '@react-native-firebase/auth';
+import {useTheme} from '@react-navigation/native';
 
 const CustomDrawer = (props: DrawerContentComponentProps) => {
   const {user} = useAuth();
+  const {colors} = useTheme();
 
   const SignOut = () => {
     auth().signOut();
@@ -23,17 +25,17 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
         <Image source={{uri: user?.photoURL}} style={styles.ProfilePhoto} />
       </View>
       <View style={styles.DisplayName}>
-        <Text style={styles.DisplayText}>{user?.displayName}</Text>
+        <Text style={{color: colors.text}}>{user?.displayName}</Text>
       </View>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
 
       <DrawerItem
+        // eslint-disable-next-line react-native/no-inline-styles
+        labelStyle={{color: 'white'}}
         label="Sign Out"
-        icon={({color, size}) => (
-          <Ionicons name="log-out" size={size} color={color} />
-        )}
+        icon={({size}) => <Ionicons name="log-out" size={size} color="white" />}
         onPress={SignOut}
       />
     </View>
@@ -60,9 +62,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 12,
-  },
-  DisplayText: {
-    color: '#686868',
   },
 });
 

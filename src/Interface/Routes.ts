@@ -3,10 +3,12 @@ export type Routes = {
     name: string;
     item: {
       id: string;
+      original_title: string;
       title: string;
-      overview: string;
       poster_path: string;
+      overview: string;
       backdrop_path: string;
+      release_date: string;
     };
   };
   Home: undefined;

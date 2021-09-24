@@ -14,6 +14,9 @@ const StackNav = () => {
     <Stack.Navigator
       screenOptions={{
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+        headerStyle: {
+          backgroundColor: '#1C2228',
+        },
       }}>
       <Stack.Screen
         name="SearchScreen"

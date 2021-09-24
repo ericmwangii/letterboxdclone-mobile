@@ -40,13 +40,6 @@ const Search: FC<ScreenProps> = ({navigation}) => {
       const data = await res.json();
       setLoading(false);
       setResults(data.results);
-
-      // console.log(data.results);
-
-      const movieId = data.results;
-      const id = movieId.map((movie: {id: number}) => movie.id);
-
-      console.log(id);
     } catch (error) {
       console.log(error);
     }
@@ -56,15 +49,16 @@ const Search: FC<ScreenProps> = ({navigation}) => {
     <View style={styles.Container}>
       <View style={styles.Form}>
         <TextInput
-          underlineColorAndroid="#95A3B3"
+          underlineColorAndroid="white"
           style={styles.Search}
           value={search}
-          placeholder="Search for book..."
+          placeholder="Search for movie..."
+          placeholderTextColor={'white'}
           onChangeText={onChange}
           onSubmitEditing={fetchData}
         />
 
-        <Ionicons name="search" size={25} onPress={fetchData} />
+        <Ionicons name="search" size={25} color="white" onPress={fetchData} />
       </View>
 
       {loading && results ? (
@@ -87,7 +81,9 @@ const Search: FC<ScreenProps> = ({navigation}) => {
                   style={styles.MoviePoster}
                 />
                 <View style={styles.MovieInfo}>
-                  <Text style={styles.Title}>{item.title}</Text>
+                  <Text style={styles.Title}>
+                    {item.title} ({item.release_date?.slice(0, 4)})
+                  </Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -116,6 +112,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginTop: 10,
     borderRadius: 50,
+    color: 'white',
   },
   MoviePoster: {
     width: 100,
@@ -123,11 +120,10 @@ const styles = StyleSheet.create({
   },
   Title: {
     fontWeight: 'bold',
+    color: 'white',
   },
   MovieInfo: {
-    flex: 1,
-    flexShrink: 1,
-    marginLeft: 2,
+    marginLeft: 20,
   },
   MovieCard: {
     flexDirection: 'row',
